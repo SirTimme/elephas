@@ -1,0 +1,12 @@
+plugins {
+    id "jacoco"
+    id "java"
+}
+
+jacoco {
+    toolVersion = "0.8.9"
+}
+
+jacocoTestReport {
+    dependsOn test
+}
