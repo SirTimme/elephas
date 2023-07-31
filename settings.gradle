@@ -4,3 +4,11 @@ include 'modules:adder'
 include 'modules:multiplier'
 include 'modules:subtracter'
 include 'modules:divider'
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        testlibs {
+            library("junit-jupiter", "org.junit.jupiter:junit-jupiter:5.9.1")
+        }
+    }
+}
