@@ -1,5 +1,5 @@
 plugins {
-    id "org.example.coverage-report"
+    id "org.example.testing"
 }
 
 group = 'org.example'
