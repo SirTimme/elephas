@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PG_DATA: ${PG_DATA}
+    volumes:
+      - teamcity-db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  teamcity-server:
+    image: jetbrains/teamcity-server:latest
+    ports:
+      - "8111:8111"
+    volumes:
+      - teamcity-data:/data/teamcity_server/datadir
+      - teamcity-logs:/opt/teamcity/logs
+    depends_on:
+      - db
+
+  teamcity-agent:
+    image: jetbrains/teamcity-agent:latest
+    privileged: true
+    volumes:
+      - teamcity-agent-conf:/data/teamcity_agent/conf
+    environment:
+      SERVER_URL: ${SERVER_URL}
+      DOCKER_IN_DOCKER: start
+      AGENT_NAME: agent_47
+
+volumes:
+  teamcity-db:
+  teamcity-agent-conf:
+  teamcity-data:
+  teamcity-logs:
