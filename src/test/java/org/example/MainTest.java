@@ -25,7 +25,7 @@ public class MainTest {
 
     @Test
     void mainPrintHelloWorld() {
-        Main.main(new String[]{});
+        new Main().main(new String[]{});
 
         assertEquals("Hello world!", outputStreamCaptor.toString().trim());
     }
