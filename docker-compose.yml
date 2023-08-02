@@ -3,7 +3,6 @@ version: '3.8'
 name: elephas
 services:
   teamcity-database:
-    container_name: teamcity-database
     image: postgres:${POSTGRES_VERSION}
     restart: always
     environment:
@@ -11,34 +10,26 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - teamcity-database:/var/lib/postgresql/data
+      - /var/lib/postgresql/data
     ports:
       - "5432:5432"
 
   teamcity-server:
-    container_name: teamcity-server
     image: jetbrains/teamcity-server:${TEAMCITY_VERSION}
     ports:
       - "8111:8111"
     volumes:
-      - teamcity-data:/data/teamcity_server/datadir
-      - teamcity-logs:/opt/teamcity/logs
+      - /data/teamcity_server/datadir
+      - /opt/teamcity/logs
     depends_on:
       - teamcity-database
 
-  teamcity-agent-47:
-    container_name: teamcity-agent-47
+  teamcity-agent:
     image: jetbrains/teamcity-agent:${TEAMCITY_VERSION}
     privileged: true
     volumes:
-      - teamcity-agent-47-conf:/data/teamcity_agent/conf
+      - /data/teamcity_agent/conf
     environment:
       SERVER_URL: ${SERVER_URL}
       DOCKER_IN_DOCKER: start
       AGENT_NAME: agent_47
-
-volumes:
-  teamcity-database:
-  teamcity-agent-47-conf:
-  teamcity-data:
-  teamcity-logs:
