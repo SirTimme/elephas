@@ -6,6 +6,9 @@ include 'modules:subtracter'
 include 'modules:divider'
 
 dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
     versionCatalogs {
         testlibs {
             library("junit-jupiter", "org.junit.jupiter:junit-jupiter:5.9.1")
