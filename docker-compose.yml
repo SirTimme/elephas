@@ -1,6 +1,6 @@
 version: '3.8'
 
-name: jumbo-java
+name: elephas
 services:
   teamcity-database:
     container_name: teamcity-database
@@ -39,10 +39,6 @@ services:
 
 volumes:
   teamcity-database:
-    name: teamcity-database
   teamcity-agent-47-conf:
-    name: teamcity-agent-47-conf
   teamcity-data:
-    name: teamcity-server-data
   teamcity-logs:
-    name: teamcity-server-logs

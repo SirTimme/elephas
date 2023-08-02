@@ -1,4 +1,4 @@
-rootProject.name = 'jumbo-java'
+rootProject.name = 'elephas'
 
 include 'modules:adder'
 include 'modules:multiplier'
