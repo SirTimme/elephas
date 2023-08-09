@@ -1,5 +1,4 @@
 <h1 align="center">Elephas</h1>
-<h3 align="center">Showcase of a multi-project setup using gradle featuring code coverage and dockerized Teamcity pipeline</h3>
 
 ## Project structure
 
