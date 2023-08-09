@@ -1,4 +1,4 @@
-rootProject.name = rootProject.name
+rootProject.name = "elephas"
 
 include 'modules:adder'
 include 'modules:multiplier'
