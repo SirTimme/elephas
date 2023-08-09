@@ -42,7 +42,7 @@ test {
 The plugin applies the `java` plugin to be able to modify the `gradle test` task and adds the JUnit dependency.\
 
 Interesting is the `testlibs.junit.jupiter` statement where the JUnit dependency is defined. This is the gradle way of using a so-called `version catalog`.
-The catalog is located in the `settings.gradle` in the root of the project at looks like this:
+The catalog is defined in the `settings.gradle` at the projectroot and looks like this:
 
 ```
 dependencyResolutionManagement {
@@ -126,7 +126,7 @@ TEAMCITY_VERSION=2023.05.2
 POSTGRES_VERSION=15.3
 ```
 
-## Workflow
+### Workflow
 
 When a commit gets pushed to this repo, the Teamcity pipeline starts and executes `gradle clean build` to freshly build the project.\
 As a second step tests it with coverage metrics using Jacoco. The results look the following:
