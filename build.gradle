@@ -1,17 +1,5 @@
 plugins {
-    id "org.example.coverage"
-    id 'jacoco-report-aggregation'
-}
-
-dependencies {
-    jacocoAggregation project(":modules:adder")
-    jacocoAggregation project(":modules:subtracter")
-    jacocoAggregation project(":modules:multiplier")
-    jacocoAggregation project(":modules:divider")
-}
-
-test {
-    finalizedBy testCodeCoverageReport
+    id "org.example.testing"
 }
 
 group = 'org.example'
