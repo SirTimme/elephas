@@ -32,21 +32,16 @@ Each subproject contains a unit test which test their respective function (addin
 ```shell
 PS C:\GitHub\SirTimme\elephas> gradle test
 
-> Task :test
-MainTest > mainPrintHelloWorld() "PASSED"
+MainTest > mainPrintHelloWorld() PASSED
 
-> Task :modules:adder:test
-AdderTest > testAdd() "PASSED"
+AdderTest > testAdd() PASSED
 
-> Task :modules:divider:test
-DividerTest > testDivide() "PASSED"
-DividerTest > testWhenDiscNull() "PASSED"
+DividerTest > testDivide() PASSED
+DividerTest > testWhenDiscNull() PASSED
 
-> Task :modules:multiplier:test
-MultiplierTest > testMultiply() "PASSED"
+MultiplierTest > testMultiply() PASSED
 
-> Task :modules:subtracter:test
-SubtracterTest > testSubtract() "PASSED"
+SubtracterTest > testSubtract() PASSED
 ```
 
 ## Gradle Plugins
