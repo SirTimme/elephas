@@ -29,11 +29,30 @@ Root project 'elephas'
 
 Each subproject contains a unit test which test their respective function (adding, subtracting, multiplying, dividing).
 
+```shell
+PS C:\GitHub\SirTimme\elephas> gradle test
+
+> Task :test
+MainTest > mainPrintHelloWorld() "PASSED"
+
+> Task :modules:adder:test
+AdderTest > testAdd() "PASSED"
+
+> Task :modules:divider:test
+DividerTest > testDivide() "PASSED"
+DividerTest > testWhenDiscNull() "PASSED"
+
+> Task :modules:multiplier:test
+MultiplierTest > testMultiply() "PASSED"
+
+> Task :modules:subtracter:test
+SubtracterTest > testSubtract() "PASSED"
+```
+
 ## Gradle Plugins
 
 Each subproject implements the `org.example.testing` plugin which itself contains a JUnit dependency for allowing testing.
 The plugin looks the following:
-
 ```
 plugins {
     id "java"
