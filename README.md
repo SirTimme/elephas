@@ -1,5 +1,15 @@
 <h1 align="center">Elephas</h1>
 
+<h3 align="center">Showcase of a multi-project setup using gradle<br/>featuring code coverage and dockerized Teamcity pipeline</h3>
+
+## Table of Contents
+1. [Project Structure](#project-structure)
+2. [Tests](#tests)
+3. [Gradle Plugins](#gradle-plugins)
+4. [Teamcity](#teamcity)
+   1. [Docker setup](#docker-setup)
+   2. [Workflow](#workflow)
+
 ## Project structure
 
 ````
@@ -17,7 +27,7 @@ Root project 'elephas'
 
 ## Tests
 
-Each subproject contains an unit test which test their respective function (adding, subtracting, multiplying, dividing).
+Each subproject contains a unit test which test their respective function (adding, subtracting, multiplying, dividing).
 
 ## Gradle Plugins
 
@@ -55,7 +65,7 @@ dependencyResolutionManagement {
 }
 ```
 
-## Teamcity 
+## Teamcity
 
 ### Docker setup
 
