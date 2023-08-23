@@ -10,7 +10,6 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MainTest {
-    private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach
@@ -20,12 +19,12 @@ public class MainTest {
 
     @AfterEach
     public void tearDown() {
-        System.setOut(standardOut);
+        System.setOut(System.out);
     }
 
     @Test
     void mainPrintHelloWorld() {
-        new Main().main(new String[]{});
+        Main.main(new String[]{});
 
         assertEquals("Hello world!", outputStreamCaptor.toString().trim());
     }
