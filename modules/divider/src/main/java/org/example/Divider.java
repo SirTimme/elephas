@@ -8,7 +8,7 @@ public class Divider {
      * Divides two integers
      *
      * @param a the numerator
-     * @param b the denominator. If the denominator is 0, the methods throws an <code>IllegalArgumentException</code>     *
+     * @param b the denominator. If the denominator is 0, the methods throws an <code>IllegalArgumentException</code>
      * @return the divided number
      */
     public float divide(int a, int b) {
