@@ -1,6 +1,5 @@
 package org.example;
 
-
 /**
  * The main entry point for the program
  */
