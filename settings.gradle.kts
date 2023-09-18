@@ -4,3 +4,9 @@ include("modules:adder")
 include("modules:multiplier")
 include("modules:subtracter")
 include("modules:divider")
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
