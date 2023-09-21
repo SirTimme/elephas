@@ -5,7 +5,7 @@
 ## Table of Contents
 1. [Project Structure](#project-structure)
 2. [Tests](#tests)
-3. [Gradle Plugins](#gradle-plugins)
+3. [Gradle Plugin](#gradle-plugin)
 4. [Teamcity](#teamcity)
    1. [Docker setup](#docker-setup)
    2. [Workflow](#workflow)
@@ -40,40 +40,30 @@ MultiplierTest > testMultiply() "PASSED"
 SubtracterTest > testSubtract() "PASSED"
 ```
 
-## Gradle Plugins
+## Gradle Plugin
 
-Each subproject implements the `org.example.testing` plugin which itself contains a JUnit dependency for allowing testing.
+Each subproject implements the `org.example.testing` plugin which itself contains a JUnit dependency for testing.
 The plugin looks the following:
-```
+```kt
 plugins {
-    id "java"
+    java
+}
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-    testImplementation testlibs.junit.jupiter
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
 }
 
-test {
+tasks.test {
     useJUnitPlatform()
 }
 ```
 
-The plugin applies the `java` plugin to be able to modify the `gradle test` task and adds the JUnit dependency.\
-Interesting is the `testlibs.junit.jupiter` statement where the JUnit dependency is defined. This is the gradle way of using a so-called `version catalog`.
-The catalog is defined in the `settings.gradle` at the projectroot and looks like this:
-
-```
-dependencyResolutionManagement {
-    repositories {
-        mavenCentral()
-    }
-    versionCatalogs {
-        testlibs {
-            library("junit-jupiter", "org.junit.jupiter:junit-jupiter:5.9.1")
-        }
-    }
-}
-```
+The plugin uses the `java` plugin to be able to modify the `gradle test` command and adds the JUnit dependency.
 
 ## Teamcity
 
@@ -140,8 +130,8 @@ POSTGRES_DB=                                # the database name of your choice
 POSTGRES_USER=                              # the database username of your choice
 POSTGRES_PASSWORD=                          # the database password of your choice
 SERVER_URL=http://teamcity-server:8111
-TEAMCITY_VERSION=2023.05.2
-POSTGRES_VERSION=15.3
+TEAMCITY_VERSION=2023.05.4
+POSTGRES_VERSION=15.4
 ```
 
 ### Workflow
