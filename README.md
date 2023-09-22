@@ -42,9 +42,7 @@ SubtracterTest > testSubtract() "PASSED"
 
 ## Gradle Plugin
 
-> [!NOTE]
-> Each subproject implements the `org.example.testing` plugin which itself contains a JUnit dependency for testing. The plugin looks the following:
-
+Each subproject implements the `org.example.testing` plugin. The plugin uses the `java` plugin to be able to modify the `gradle test` command and adds the JUnit dependency. The plugin looks the following:
 ```kt
 plugins {
     java
@@ -64,13 +62,14 @@ tasks.test {
 }
 ```
 
-The plugin uses the `java` plugin to be able to modify the `gradle test` command and adds the JUnit dependency.
-
 ## Teamcity
 
 ### Docker setup
 
-This repository contains a `docker-compose.yml` which configures all required services for a functioning teamcity instance.
+This repository contains a `docker-compose.yml` which configures the following services:
+- postgres database for data storage
+- teamcity-server instance
+- teamcity-agent for executing the jobs
 
 ```yaml
 version: '3.8'
@@ -114,27 +113,25 @@ volumes:
   server-logs:
   agent-47-conf:
 ```
-This file configures a `postgres database` for storing all data, a `teamcity-server` instance and one `teamcity-agent` for executing the jobs.
 
 > [!IMPORTANT]
->  The following directory structure is needed for elephas to run:
-> 
-```
-/
-├── docker-compose.yml
-└── .env
-```
-
-The `.env` file needs these entries:
-
-```
-POSTGRES_DB=                                # the database name of your choice
-POSTGRES_USER=                              # the database username of your choice
-POSTGRES_PASSWORD=                          # the database password of your choice
-SERVER_URL=http://teamcity-server:8111
-TEAMCITY_VERSION=2023.05.4
-POSTGRES_VERSION=15.4
-```
+> Self-hosting configuration:<br>
+> The following directory structure is needed for elephas to run:
+> ```
+> /
+> ├── docker-compose.yml
+> └── .env
+> ```
+> The `.env` file needs these entries:
+>
+> ```
+> POSTGRES_DB=                                # the database name of your choice
+> POSTGRES_USER=                              # the database username of your choice
+> POSTGRES_PASSWORD=                          # the database password of your choice
+> SERVER_URL=http://teamcity-server:8111
+> TEAMCITY_VERSION=2023.05.4
+> POSTGRES_VERSION=15.4
+> ```
 
 ### Workflow
 
