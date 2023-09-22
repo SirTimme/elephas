@@ -42,8 +42,9 @@ SubtracterTest > testSubtract() "PASSED"
 
 ## Gradle Plugin
 
-Each subproject implements the `org.example.testing` plugin which itself contains a JUnit dependency for testing.
-The plugin looks the following:
+> [!NOTE]
+> Each subproject implements the `org.example.testing` plugin which itself contains a JUnit dependency for testing. The plugin looks the following:
+
 ```kt
 plugins {
     java
@@ -113,10 +114,11 @@ volumes:
   server-logs:
   agent-47-conf:
 ```
-
 This file configures a `postgres database` for storing all data, a `teamcity-server` instance and one `teamcity-agent` for executing the jobs.
 
-The following directory structure is needed for elephas to run:
+> [!IMPORTANT]
+>  The following directory structure is needed for elephas to run:
+> 
 ```
 /
 ├── docker-compose.yml
