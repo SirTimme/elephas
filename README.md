@@ -81,8 +81,7 @@ The green diamond says that both branches created by the if statement are covere
 ## Self hosting
 
 > [!IMPORTANT]
-> Configuration:<br>
-> The following directory structure is needed for elephas to run:
+> This directory structure is needed for elephas to run:
 > ```
 > /
 > ├── docker-compose.yml
