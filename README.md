@@ -7,8 +7,7 @@
 2. [Tests](#tests)
 3. [Gradle Plugin](#gradle-plugin)
 4. [Teamcity](#teamcity)
-   1. [Docker setup](#docker-setup)
-   2. [Workflow](#workflow)
+5. [Self-hosting](#self-hosting)
 
 ## Project structure
 
@@ -64,9 +63,44 @@ tasks.test {
 
 ## Teamcity
 
-### Docker setup
+When a commit gets pushed to this repo, the Teamcity pipeline starts and executes a fresh build of the project.\
+As a second step the pipeline tests the project with coverage metrics using Jacoco. The results look the following:
 
-This repository contains a `docker-compose.yml` which configures the following services:
+![teamcity-result-overview](src/main/resources/assets/teamcity-result.png)
+
+The `Code Coverage` tab provides a detailed overview over each class with their respective unit tests and code coverage:
+
+![teamcity-code-coverage-tab](src/main/resources/assets/teamcity-coverage-tab.png)
+
+It is even possible to inspect a specific class to look at the covered code lines:
+
+![teamcity-coverage-specific-class](src/main/resources/assets/teamcity-coverage-class.png)
+
+The green diamond says that both branches created by the if statement are covered.
+
+## Self hosting
+
+> [!IMPORTANT]
+> Configuration:<br>
+> The following directory structure is needed for elephas to run:
+> ```
+> /
+> ├── docker-compose.yml
+> └── .env
+> ```
+
+The `.env` file needs the following entries:
+
+```
+POSTGRES_DB=                                # the database name of your choice
+POSTGRES_USER=                              # the database username of your choice
+POSTGRES_PASSWORD=                          # the database password of your choice
+SERVER_URL=http://teamcity-server:8111
+TEAMCITY_VERSION=2023.05.4
+POSTGRES_VERSION=15.4
+```
+
+The `docker-compose.yml` configures the following services:
 - postgres database for data storage
 - teamcity-server instance
 - teamcity-agent for executing the jobs
@@ -113,39 +147,3 @@ volumes:
   server-logs:
   agent-47-conf:
 ```
-
-> [!IMPORTANT]
-> Self-hosting configuration:<br>
-> The following directory structure is needed for elephas to run:
-> ```
-> /
-> ├── docker-compose.yml
-> └── .env
-> ```
-> The `.env` file needs these entries:
->
-> ```
-> POSTGRES_DB=                                # the database name of your choice
-> POSTGRES_USER=                              # the database username of your choice
-> POSTGRES_PASSWORD=                          # the database password of your choice
-> SERVER_URL=http://teamcity-server:8111
-> TEAMCITY_VERSION=2023.05.4
-> POSTGRES_VERSION=15.4
-> ```
-
-### Workflow
-
-When a commit gets pushed to this repo, the Teamcity pipeline starts and executes a fresh build of the project.\
-As a second step the pipeline tests the project with coverage metrics using Jacoco. The results look the following:
-
-![teamcity-result-overview](src/main/resources/assets/teamcity-result.png)
-
-The `Code Coverage` tab provides a detailed overview over each class with their respective unit tests and code coverage:
-
-![teamcity-code-coverage-tab](src/main/resources/assets/teamcity-coverage-tab.png)
-
-It is even possible to inspect a specific class to look at the covered code lines:
-
-![teamcity-coverage-specific-class](src/main/resources/assets/teamcity-coverage-class.png)
-
-The green diamond says that both branches created by the if statement are covered.
