@@ -9,7 +9,7 @@
 4. [Teamcity](#teamcity)
 5. [Self-hosting](#self-hosting)
 
-## Project structure
+## Project Structure
 
 ````
 ------------------------------------------------------------
