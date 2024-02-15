@@ -24,13 +24,15 @@ services:
       - teamcity-database
 
   teamcity-agent:
-    image: jetbrains/teamcity-agent:${TEAMCITY_VERSION}
+    image: jetbrains/teamcity-agent:${TEAMCITY_VERSION}-linux-sudo
+    user: "root"
     privileged: true
     environment:
       SERVER_URL: ${SERVER_URL}
       DOCKER_IN_DOCKER: start
       AGENT_NAME: agent_47
     volumes:
+      - docker_volumes:/var/lib/docker
       - agent-47-conf:/data/teamcity_agent/conf
 
 volumes:
@@ -38,3 +40,4 @@ volumes:
   server-data:
   server-logs:
   agent-47-conf:
+  docker_volumes:
