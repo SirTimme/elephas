@@ -1,4 +1,4 @@
-package org.example;
+package org.example.testing;
 
 /**
  * Provides a {@link #divide(int, int)} method for integers
