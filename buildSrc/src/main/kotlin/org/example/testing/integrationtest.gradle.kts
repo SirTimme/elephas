@@ -7,13 +7,13 @@ plugins {
 tasks.register("printClassPaths") {
     group = "diagnostics"
 
-    logger.lifecycle("Compile class paths of sourceset 'test' of $project:")
-    sourceSets["test"].compileClasspath.files.forEach {
+    logger.lifecycle("Compile class paths of sourceset 'intTest' of $project:")
+    sourceSets["intTest"].compileClasspath.files.forEach {
         logger.lifecycle(it.absolutePath)
     }
 
-    logger.lifecycle("Runtime class paths of sourceset 'test' of $project:")
-    sourceSets["test"].runtimeClasspath.files.forEach {
+    logger.lifecycle("Runtime class paths of sourceset 'intTest' of $project:")
+    sourceSets["intTest"].runtimeClasspath.files.forEach {
         logger.lifecycle(it.absolutePath)
     }
 }
@@ -34,4 +34,3 @@ sourceSets {
         runtimeClasspath += sourceSets["intTest"].output
     }
 }
-

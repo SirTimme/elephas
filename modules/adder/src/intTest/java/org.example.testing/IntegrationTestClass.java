@@ -1,13 +1,9 @@
 package org.example.testing;
 
 public class IntegrationTestClass {
-    private final Divider divider;
+    private final Subtracter subtracter;
 
-    public IntegrationTestClass(final Divider divider) {
-        this.divider = divider;
-    }
-
-    public float divide(int a, int b) {
-        return divider.divide(a, b);
+    public IntegrationTestClass(Subtracter subtracter) {
+        this.subtracter = subtracter;
     }
 }
