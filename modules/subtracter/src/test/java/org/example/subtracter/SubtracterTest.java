@@ -1,4 +1,4 @@
-package org.example.testing;
+package org.example.subtracter;
 
 import org.junit.jupiter.api.Test;
 

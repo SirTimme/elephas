@@ -1,7 +1,7 @@
 package org.example.testing
 
 plugins {
-    java
+    id("org.example.testing.java-convention")
 }
 
 repositories {
@@ -9,10 +9,14 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+    testImplementation("org.junit.platform:junit-platform-suite-engine:1.11.0-M2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-tasks.withType<Test> {
+tasks.named<Test>("test") {
+    testLogging {
+        events("started", "passed", "skipped", "failed")
+    }
     useJUnitPlatform()
 }

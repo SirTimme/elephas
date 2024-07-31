@@ -1,4 +1,4 @@
-package org.example.testing;
+package org.example.subtracter;
 
 /**
  * Provides a {@link #subtract(int, int)} method for integers

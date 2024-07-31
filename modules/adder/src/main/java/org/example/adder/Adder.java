@@ -1,4 +1,4 @@
-package org.example.testing;
+package org.example.adder;
 
 /**
  * Provides an {@link #add(int, int)} method for integers

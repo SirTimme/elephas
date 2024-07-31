@@ -1,4 +1,4 @@
-package org.example.testing;
+package org.example.multiplier;
 
 /**
  * Provides a {@link #multiply(int, int)} method for integers

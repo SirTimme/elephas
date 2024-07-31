@@ -1,4 +1,4 @@
-package org.example.testing;
+package org.example.divider;
 
 import org.junit.jupiter.api.Test;
 
