@@ -1,3 +1,3 @@
 plugins {
-    id("org.example.testing.test-convention")
+    id("dev.sirtimme.test-convention")
 }

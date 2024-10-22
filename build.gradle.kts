@@ -1,6 +1,6 @@
 plugins {
-    id("org.example.testing.test-convention")
+    id("dev.sirtimme.test-convention")
 }
 
-group = "org.example"
+group = "dev.sirtimme"
 version = "0.0.1"
