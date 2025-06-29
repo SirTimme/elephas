@@ -23,6 +23,6 @@ public class AdditionTest {
         final var resultOne = adder.add(10, 5);
         final var resultTwo = adder.add(68, 1);
 
-        assertEquals(resultOne + resultTwo, 84);
+        assertEquals(84, resultOne + resultTwo);
     }
 }
