@@ -5,7 +5,7 @@
 ## Table of Contents
 1. [Project Structure](#project-structure)
 2. [Tests](#tests)
-3. [Gradle Plugin](#gradle-plugin)
+3. [Gradle Plugin](#gradle-plugins)
 
 ## Project Structure
 
@@ -37,24 +37,36 @@ MultiplierTest > testMultiply() "PASSED"
 SubtracterTest > testSubtract() "PASSED"
 ```
 
-## Gradle Plugin
+## Gradle Plugins
 
-Each subproject applies the `dev.sirtimme.test-convention` plugin. The plugin uses the `java` plugin to be able to modify the `gradle test` command and adds the JUnit dependency. The plugin looks the following:
+### Java Conventions
+
+Each subproject applies the `dev.sirtimme.java-convention` plugin. The plugin configures the appropiate java configurations. The plugin looks the following:
+
 ```kt
+package dev.sirtimme.gradle
+
 plugins {
     java
 }
 
-repositories {
-    mavenCentral()
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
+```
 
-dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
-}
+### Test Conventions
 
-tasks.test {
+Each subproject applies the `dev.sirtimme.test-convention` plugin. The plugin configures the necessary Gradle tasks to make the project JUnit compatible. The plugin looks the following:
+
+```kt
+package dev.sirtimme.gradle
+
+tasks.named<Test>("test") {
+    testLogging {
+        events("started", "passed", "skipped", "failed")
+    }
     useJUnitPlatform()
 }
 ```
