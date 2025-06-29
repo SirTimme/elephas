@@ -1,4 +1,4 @@
-package dev.sirtimme
+package dev.sirtimme.gradle
 
 plugins {
     java

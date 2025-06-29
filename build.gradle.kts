@@ -1,5 +1,6 @@
 plugins {
-    id("dev.sirtimme.test-convention")
+    id("dev.sirtimme.gradle.java-convention")
+    id("dev.sirtimme.gradle.test-convention")
 }
 
 group = "dev.sirtimme"
